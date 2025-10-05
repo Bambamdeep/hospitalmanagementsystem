@@ -37,7 +37,8 @@ inter-service communication, role-based security, and asynchronous messaging.
 
 ## Default Credentials for Testing
 
-|  Role  | Username      | Password   |
+|  Role  | Username      | Password  |
+|-------|----------------|-----------|
 | ADMIN | deepak         | 1234  |
 | USER  | kumar          | 123   |
 
