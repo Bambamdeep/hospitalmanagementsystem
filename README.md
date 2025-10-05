@@ -37,8 +37,8 @@ A distributed Hospital Management System built using **Java 17**, **Spring Boot 
 
 | Role  | Username       | Password |
 | ----- | -------------- | -------- |
-| ADMIN | admin@hospital | admin123 |
-| USER  | user@hospital  | user123  |
+| ADMIN | deepak         |  1234    |
+| USER  | kumar          |  123     |
 
 ## 📚 API Documentation
 
@@ -60,14 +60,14 @@ A distributed Hospital Management System built using **Java 17**, **Spring Boot 
 | Department Service  | 8084 | [http://localhost:8084/department](http://localhost:8084/department)   | [http://localhost:8762/departments](http://localhost:8762/departments)   |
 | Billing Service     | 8085 | [http://localhost:8085/bill](http://localhost:8085/bill)               | [http://localhost:8762/bills](http://localhost:8762/bills)               |
 | Config Server       | 8888 | [http://localhost:8888](http://localhost:8888)                         |                                                                          |
-| Eureka Server       | 8761 | [http://localhost:8761](http://localhost:8761)                         |                                                                          |
-| API Gateway         | 8762 | [http://localhost:8080](http://localhost:8080)                         |                                                                          |
+| Eureka Server       | 8761 | [http://localhost:8761](http://localhost:8761)                         |                                                                          |12
+| API Gateway         | 8762 | [http://localhost:8762](http://localhost:8762)                         |                                                                          |
 
 ## API Endpoints
 
 ### Patient Service
 
-**Base URL:** [http://localhost:8081/patient](http://localhost:8081/patient)
+**Base URL:**(http://localhost:8081/patient)
 
 * POST /create → Create a new patient
 * GET /id/{patientId} → Retrieve a patient by ID
