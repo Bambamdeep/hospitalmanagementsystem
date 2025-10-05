@@ -7,7 +7,7 @@ inter-service communication, role-based security, and asynchronous messaging.
 ## 📦 Microservices Overview
 
          Service                                               Description 
-|---------------------------------|--------------------------------------------|
+         
 | **Patient Service**                          | Manages patient information |
 | **Doctor Service**                           | Manages doctor information  |
 | **Appointment Service**                      | Manages appointments between patients and doctors |
