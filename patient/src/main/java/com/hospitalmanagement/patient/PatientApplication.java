@@ -24,9 +24,9 @@ private PatientService patientService;
 }
 	@Override
 	public void run(String... args) throws Exception {
-	Patient patient = new Patient(1,"Kumar",15,"MALE","Kolkata","+916206079081");
+	Patient patient = new Patient(18,"Kumar",15,"MALE","Kolkata","+916206079081");
 	
-	//	patientService.createPatient(patient);
+		patientService.createPatient(patient);
 	}
 
 }

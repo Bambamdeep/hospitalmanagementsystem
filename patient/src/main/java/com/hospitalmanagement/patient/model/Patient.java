@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Size;
 @Table(name = "Patient_Details")
 public class Patient {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long patientId;
 	@NotEmpty(message = "Enter your name")
 	@Size(min=3 ,max= 10)
