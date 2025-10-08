@@ -47,30 +47,32 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 	@Override
 	public Appointment scheduleAppointment(Appointment appointment) {
-		log.info("Scheduling Appointment with Patient{}", appointment.getPatientId());
-		appointment.setAppointmentDateTime(appointment.getAppointmentDateTime());
-		appointment.setAppointmentStatus(AppointmentStatus.SCHEDULED);
-		Appointment appointmentCreated = appointmentRepository.save(appointment);
-		log.info("Appointment Sucessfully Scheduled");
-		log.info("Sending Notification to patient");
-		sendNotification(appointmentCreated);
-		return appointmentCreated;
+		 log.info("Scheduling Appointment with Patient {}", appointment.getPatientId());
+
+		    appointment.setAppointmentStatus(AppointmentStatus.SCHEDULED);
+		    Appointment appointmentCreated = appointmentRepository.save(appointment);
+
+		    log.info("Appointment Successfully Scheduled");
+		    log.info("Sending Notification to patient");
+
+		    sendNotification(appointmentCreated);
+		    return appointmentCreated;
+
 	}
 
 	private void sendNotification(Appointment appointment) {
-		Appointment sendAppointment = appointmentRepository.findByPatientId(appointment.getPatientId())
-				.orElseThrow(() -> new PatientIdNotFoundException("Patient Not Found "));
-		AppointmentNotificationDto appointmentNotificationDto = new AppointmentNotificationDto();
-		appointmentNotificationDto.setAppointmentId(appointment.getAppointmentId());
-		appointmentNotificationDto.setAppointmentId(sendAppointment.getPatientId());
-		// appointmentNotificationDto.setAppointmentId(appointment);
+		 Appointment sendAppointment = appointmentRepository.findByPatientId(appointment.getPatientId())
+			        .orElseThrow(() -> new PatientIdNotFoundException("Patient Not Found"));
 
-		boolean send = streamBridge.send("appointmentCreated-out-0", appointmentNotificationDto);
-		if (send) {
-			System.out.println("Event is sucessfully send");
-		} else {
-			System.out.println("Fails");
-		}
+			    AppointmentNotificationDto appointmentNotificationDto = new AppointmentNotificationDto();
+			    appointmentNotificationDto.setAppointmentId(appointment.getAppointmentId());
+			    appointmentNotificationDto.setPatientId(sendAppointment.getPatientId());
+			 			    boolean send = streamBridge.send("appointmentCreated-out-0", appointmentNotificationDto);
+			    if (send) {
+			        System.out.println("Event is successfully sent");
+			    } else {
+			        System.out.println("Failed to send event");
+			    }
 
 	}
 

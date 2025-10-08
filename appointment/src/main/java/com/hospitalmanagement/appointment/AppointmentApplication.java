@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+import com.hospitalmanagement.appointment.service.AppointmentService;
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients("com.hospitalmanagement.appointment.service")
@@ -17,7 +19,7 @@ public class AppointmentApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-//private AppointmentService appointmentService;
+private AppointmentService appointmentService;
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub

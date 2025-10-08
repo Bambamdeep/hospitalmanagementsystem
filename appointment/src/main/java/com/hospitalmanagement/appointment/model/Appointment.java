@@ -23,18 +23,18 @@ import jakarta.validation.constraints.NotNull;
 public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@NotNull
+	//@NotNull
 	@Column(name = "AppointmentId")
 	private long appointmentId;
 	@Column(name = "PatientId")
-	@NotNull(message = "Enter PatientId")
+	//@NotNull(message = "Enter PatientId")
 	private long patientId;
 	@Column(name = "DoctorId")
-	@NotNull(message = "Enter DoctorId")
+	//@NotNull(message = "Enter DoctorId")
 	private long doctorId;
 	private LocalDateTime scheduleAt;
-	@NotNull(message = "Appointment date/time is required")
-	@Future(message = "Appointment date/time must be in the future")
+	//@NotNull(message = "Appointment date/time is required")
+	//@Future(message = "Appointment date/time must be in the future")
 	private LocalDateTime appointmentDateTime;
 	
 	@Enumerated(EnumType.STRING)
