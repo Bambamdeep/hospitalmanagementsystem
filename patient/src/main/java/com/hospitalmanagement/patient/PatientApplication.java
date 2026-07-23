@@ -27,6 +27,8 @@ private PatientService patientService;
 	Patient patient = new Patient(18,"Kumar",15,"MALE","Kolkata","+916206079081");
 	
 		patientService.createPatient(patient);
+
+		System.out.println("Pushing this into git as learning branch suppose it is dev1");
 	}
 
 }
