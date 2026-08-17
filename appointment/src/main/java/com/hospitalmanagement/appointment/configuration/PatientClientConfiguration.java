@@ -3,6 +3,10 @@ package com.hospitalmanagement.appointment.configuration;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
+import feign.RequestTemplate;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,9 +16,10 @@ import feign.RequestInterceptor;
 import feign.codec.ErrorDecoder;
 
 @Configuration
-public class PatientClientConfiguration {
 
-	
+public class PatientClientConfiguration {
+	private final ObjectProvider<HttpServletRequest> requestProvider;
+	/*
 	
 	  @Bean
 	    public RequestInterceptor basicAuthRequestInterceptor() {
@@ -37,5 +42,27 @@ public class PatientClientConfiguration {
 	        };
 	    }
 
+*/
+	public PatientClientConfiguration(ObjectProvider<HttpServletRequest> requestProvider) {
+		this.requestProvider = requestProvider;
+	}
 
+	@Bean
+	public RequestInterceptor requestInterceptor() {
+
+		return template -> {
+
+			HttpServletRequest request = requestProvider.getIfAvailable();
+
+			if (request == null) {
+				return;
+			}
+
+			String authorization = request.getHeader("Authorization");
+
+			if (authorization != null) {
+				template.header("Authorization", authorization);
+			}
+		};
+	}
 }

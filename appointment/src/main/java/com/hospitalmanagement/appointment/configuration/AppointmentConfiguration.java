@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class AppointmentConfiguration {
-
+/*
 	@Bean
 	public SecurityFilterChain customSecurityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(requests -> requests.requestMatchers("/appointment/all").hasRole("user")
@@ -45,5 +45,29 @@ public class AppointmentConfiguration {
 
 		return new InMemoryUserDetailsManager(user1, user2);
 	}
+*/
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http)
+		throws Exception {
 
+	http
+			.csrf(csrf -> csrf.disable())
+
+			.authorizeHttpRequests(auth -> auth
+
+					.requestMatchers(
+							"/v3/api-docs/**",
+							"/swagger-ui/**",
+							"/swagger-ui.html"
+					).permitAll()
+
+					.anyRequest().authenticated()
+			)
+
+			.oauth2ResourceServer(oauth2 ->
+					oauth2.jwt(Customizer.withDefaults())
+			);
+
+	return http.build();
+}
 }

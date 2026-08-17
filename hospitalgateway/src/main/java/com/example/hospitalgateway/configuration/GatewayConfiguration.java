@@ -7,16 +7,38 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class GatewayConfiguration {
-	@Bean
-	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
-		return (RouteLocator) builder.routes()
-				.route(p -> p.path("/patient/***").uri("lb://patient/patient"))
-				.route(p -> p.path("/doctor/***").uri("lb://doctor/doctor"))
-				.route(p -> p.path("/appointment/***").uri("lb://appointment/appointment"))
-				.route(p -> p.path("/department/***").uri("lb://department/department"))
-				.route(p -> p.path("/bill/***").uri("lb://billing/bill"))
-				.build();
 
-	}
+    @Bean
+
+    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
+
+        return builder.routes()
+
+                .route("auth-service", r -> r
+                        .path("/auth/**")
+                        .uri("lb://AUTH-SERVICE"))
+
+                .route("patient-service", r -> r
+                        .path("/patient/**")
+                        .uri("lb://PATIENT"))
+
+                .route("doctor-service", r -> r
+                        .path("/doctor/**")
+                        .uri("lb://DOCTOR"))
+
+                .route("appointment-service", r -> r
+                        .path("/appointment/**")
+                        .uri("lb://APPOINTMENT"))
+
+                .route("department-service", r -> r
+                        .path("/department/**")
+                        .uri("lb://DEPARTMENT"))
+
+                .route("billing-service", r -> r
+                        .path("/bill/**")
+                        .uri("lb://BILLING"))
+
+                .build();
+    }
 
 }
