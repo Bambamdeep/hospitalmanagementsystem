@@ -2,7 +2,7 @@
 
 A distributed Hospital Management System built using **Java 17**, **Spring Boot 3.x**, and **microservices architecture**. This project demonstrates enterprise-grade design patterns including service discovery, inter-service communication, role-based security, and asynchronous messaging.
 
-## 📦 Microservices Overview deploying this into release brnach
+## 📦 Microservices Overview 
 
 | Service                  | Description                                                |
 | ------------------------ | ---------------------------------------------------------- |
