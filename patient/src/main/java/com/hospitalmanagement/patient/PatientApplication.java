@@ -30,7 +30,7 @@ private PatientService patientService;
 
 		System.out.println("Pushing this into git as learning branch suppose it is dev1");
 
-		System.out.println("MR request to my branch to relese");
+		System.out.println("This is release branch and we are deploying this into Test env");
 	}
 
 }
