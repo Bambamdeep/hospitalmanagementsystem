@@ -14,7 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 
 public class DepartmentConfiguration {
-	/*
 	@Bean
 	public SecurityFilterChain customSecurityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(requests -> requests.requestMatchers("/department/all").hasRole("user")
@@ -43,29 +42,5 @@ public class DepartmentConfiguration {
 
 		return new InMemoryUserDetailsManager(user1, user2);
 	}
-*/
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http)
-			throws Exception {
 
-		http
-				.csrf(csrf -> csrf.disable())
-
-				.authorizeHttpRequests(auth -> auth
-
-						.requestMatchers(
-								"/v3/api-docs/**",
-								"/swagger-ui/**",
-								"/swagger-ui.html"
-						).permitAll()
-
-						.anyRequest().authenticated()
-				)
-
-				.oauth2ResourceServer(oauth2 ->
-						oauth2.jwt(Customizer.withDefaults())
-				);
-
-		return http.build();
-	}
 }
