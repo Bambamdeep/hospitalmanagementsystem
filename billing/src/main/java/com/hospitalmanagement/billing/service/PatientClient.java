@@ -8,7 +8,8 @@ import com.hospitalmanagement.billing.configuration.PatientClientConfiguration1;
 
 import com.hospitalmanagement.billing.utill.PatientDto;
 
-@FeignClient(name = "patient", configuration = PatientClientConfiguration1.class)
+//@FeignClient(name = "patient", configuration = PatientClientConfiguration1.class)
+@FeignClient(name = "patient")
 public interface PatientClient {
 	@GetMapping("/patient/id/{patientId}")
 	PatientDto getPatientById(@PathVariable(("patientId")) long patientId);
